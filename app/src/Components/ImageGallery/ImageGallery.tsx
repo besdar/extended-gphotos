@@ -75,7 +75,7 @@ const ImageGallery: FC<ImageGalleryPropsType> = ({
 
         const interval = setInterval(() => {
             setImagesData(imagesData => changeImageInArray([...imagesData], getRandomImage, simultaneouslyImageChanging));
-        }, 3000);
+        }, 5000);
 
         return () => clearInterval(interval);
     }, [galleryStructureConfig, getRandomImage, simultaneouslyImageChanging]);

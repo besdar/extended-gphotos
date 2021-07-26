@@ -5,8 +5,12 @@ import { getGalleryStructureData } from "../GalleryStructure";
 
 const changeImageInArray = (ImageArray: Array<ImageItemPropsType>, getRandomImage: getRandomImageFuncType, simultaneouslyImageChanging = 3) => {
     if (ImageArray.length !== 0) {
+        const uniqueIndexes = new Set<number>();
         for (let i = 0; i < simultaneouslyImageChanging; i++) {
-            const randomIndex = Math.floor(Math.random() * (ImageArray.length - 1));
+            uniqueIndexes.add(Math.floor(Math.random() * (ImageArray.length - 1)));
+        }
+
+        uniqueIndexes.forEach(randomIndex => {
             const randomImage = getRandomImage();
 
             if (ImageArray[randomIndex].isFirstImageActive) {
@@ -26,7 +30,7 @@ const changeImageInArray = (ImageArray: Array<ImageItemPropsType>, getRandomImag
                     webUrl: randomImage.webUrl,
                 };
             }
-        }
+        })
     }
 
     return ImageArray;
@@ -75,7 +79,7 @@ const ImageGallery: FC<ImageGalleryPropsType> = ({
 
         const interval = setInterval(() => {
             setImagesData(imagesData => changeImageInArray([...imagesData], getRandomImage, simultaneouslyImageChanging));
-        }, 5000);
+        }, 6000);
 
         return () => clearInterval(interval);
     }, [galleryStructureConfig, getRandomImage, simultaneouslyImageChanging]);

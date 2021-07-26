@@ -17,7 +17,7 @@
 .imageEnterActive {
     opacity: 1;
     transition-property: all;
-    transition-duration: 3s;
+    transition-duration: 2s;
     transition-timing-function: linear;
 }
 
@@ -33,7 +33,7 @@
 .imageExitActive {
     opacity: 0;
     transition-property: all;
-    transition-duration: 3s;
+    transition-duration: 2s;
     transition-timing-function: linear;
 }
 

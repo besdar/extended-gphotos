@@ -9,7 +9,7 @@ const App: FC = () => (
   galleryStructureConfig={[
     window.innerHeight,
     window.innerWidth,
-    100,
+    window.innerWidth / 3 > 300 ? 100 : 50,
     3,
   ]}
 />

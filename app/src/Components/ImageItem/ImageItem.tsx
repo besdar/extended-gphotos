@@ -4,15 +4,15 @@ import s from './ImageItem.module.css';
 import { SquareType } from '../GalleryStructure';
 
 export type ImageItemType = {
-    imageUrl: string,
-    tooltipTitle?: string,
-    webUrl?: string,
+  imageUrl: string,
+  tooltipTitle?: string,
+  webUrl?: string,
 }
 
 export type ImageItemPropsType = ImageItemType & {
-    anotherImageUrl: string,
-    isFirstImageActive: boolean,
-    squareCoordinates?: SquareType
+  anotherImageUrl: string,
+  isFirstImageActive: boolean,
+  squareCoordinates?: SquareType
 }
 
 const transitionClassNames = {
@@ -32,10 +32,11 @@ const ImageItem: FC<ImageItemPropsType> = ({
   tooltipTitle,
   webUrl,
 }) => {
-  const firstImage = useRef<HTMLImageElement>(null);
-  const secondImage = useRef<HTMLImageElement>(null);
+  const firstImage = useRef<HTMLAnchorElement>(null);
+  const secondImage = useRef<HTMLAnchorElement>(null);
   const gridArea = squareCoordinates && `${squareCoordinates.ystart}/${squareCoordinates.xstart}/${squareCoordinates.yend}/${squareCoordinates.xend}`;
 
+  // TODO: Change null inside A tag onto img
   return (
     <>
       <CSSTransition
@@ -46,17 +47,16 @@ const ImageItem: FC<ImageItemPropsType> = ({
         classNames={transitionClassNames}
         nodeRef={firstImage}
       >
-        <a href={webUrl} target="_blank" rel="noreferrer">
-          <img
-            title={tooltipTitle}
-            alt={tooltipTitle}
-            onClick={() => window.open(webUrl)}
-            ref={firstImage}
-            className={s.image}
-            src={imageUrl}
-            style={{ gridArea }}
-            aria-hidden
-          />
+        <a
+          href={webUrl}
+          target="_blank"
+          rel="noreferrer"
+          className={s.image}
+          style={{ gridArea, backgroundImage: `url(${imageUrl})` }}
+          title={tooltipTitle}
+          ref={firstImage}
+        >
+          {null}
         </a>
       </CSSTransition>
       <CSSTransition
@@ -67,15 +67,16 @@ const ImageItem: FC<ImageItemPropsType> = ({
         classNames={transitionClassNames}
         nodeRef={secondImage}
       >
-        <a href={webUrl} target="_blank" rel="noreferrer">
-          <img
-            title={tooltipTitle}
-            alt={tooltipTitle}
-            ref={secondImage}
-            className={s.image}
-            src={anotherImageUrl}
-            style={{ gridArea }}
-          />
+        <a
+          href={webUrl}
+          target="_blank"
+          rel="noreferrer"
+          className={s.image}
+          style={{ gridArea, backgroundImage: `url(${anotherImageUrl})` }}
+          title={tooltipTitle}
+          ref={secondImage}
+        >
+          {null}
         </a>
       </CSSTransition>
     </>

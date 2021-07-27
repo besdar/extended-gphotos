@@ -1,7 +1,12 @@
 .image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+
+  /* object-fit: cover; */
 }
 
 /* Declare transition start properties */

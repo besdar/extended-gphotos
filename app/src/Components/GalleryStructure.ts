@@ -80,6 +80,16 @@ export const getGalleryStructureData = (
   while (true) {
     const squareSide = getRandomSquareSide(minSquareSide, timesNumberMaxSideGreaterThanMinSide);
     const sideInElementarySquares = squareSide / minSquareSide;
+    const isEndOfLine = currentColumn === result.rowLength || currentColumn === -1;
+
+    if (isEndOfLine && currentRow === rowsCount - 1) {
+      break;
+    }
+
+    if (isEndOfLine) {
+      currentRow += 1;
+      currentColumn = squaresMap[currentRow].findIndex((el) => el === 0);
+    }
 
     if (isSquareFit(squaresMap, currentRow, currentColumn, sideInElementarySquares)) {
       for (let j = 0; j < sideInElementarySquares; j += 1) {
@@ -96,16 +106,6 @@ export const getGalleryStructureData = (
       });
       currentColumn = squaresMap[currentRow].findIndex((el) => el === 0);
       mapNumber += 1;
-    }
-
-    const isEndOfLine = currentColumn === result.rowLength || currentColumn === -1;
-    if (isEndOfLine && currentRow === rowsCount - 1) {
-      break;
-    }
-
-    if (isEndOfLine) {
-      currentRow += 1;
-      currentColumn = squaresMap[currentRow].findIndex((el) => el === 0);
     }
   }
 

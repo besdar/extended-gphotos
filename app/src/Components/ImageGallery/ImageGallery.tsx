@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import ImageItem, { ImageItemPropsType, ImageItemType } from '../ImageItem/ImageItem';
 import s from './ImageGallery.module.css';
-import { getGalleryStructureData } from '../GalleryStructure';
+import { galleryStructureParamsType, getGalleryStructureData } from '../GalleryStructure';
 
 const changeImageInArray = (
   ImageArray: Array<ImageItemPropsType & { id: number }>,
@@ -43,39 +43,23 @@ const changeImageInArray = (
 };
 
 type getRandomImageFuncType = () => ImageItemType;
-type galleryStructureParamsType = [
-        mapHeight: number,
-        mapWidth: number,
-        minSquareSide: number,
-        timesNumberMaxSideGreaterThanMinSide: number,
-    ];
 type ImageGalleryPropsType = {
-    simultaneouslyImageChanging?: number,
     getRandomImage: getRandomImageFuncType,
-    galleryStructureConfig?: galleryStructureParamsType
+    containerHeight: number,
+    galleryStructureConfig: galleryStructureParamsType,
+    simultaneouslyImageChanging?: number,
 }
 
 const ImageGallery: FC<ImageGalleryPropsType> = ({
   getRandomImage,
+  containerHeight,
   galleryStructureConfig,
   simultaneouslyImageChanging,
 }) => {
   const [imagesData, setImagesData] = useState([] as Array<ImageItemPropsType & { id: number }>);
-  const [rowLength, setRowLength] = useState(1);
-  const congigHeight = galleryStructureConfig && galleryStructureConfig[0];
-  const containerHeight = congigHeight || window.innerHeight;
 
   useEffect(() => {
-    const galleryStructureParams: galleryStructureParamsType = galleryStructureConfig || [
-      window.innerHeight,
-      window.innerWidth,
-      100,
-      3,
-    ];
-    const {
-      imagesStructureData,
-      rowLength: imagesStructureRowLength,
-    } = getGalleryStructureData(...galleryStructureParams);
+    const imagesStructureData = getGalleryStructureData(galleryStructureConfig);
 
     let counter = 0;
     const imageDataFromStructure = imagesStructureData.map((imageStructureData) => {
@@ -94,7 +78,6 @@ const ImageGallery: FC<ImageGalleryPropsType> = ({
     });
 
     setImagesData(imageDataFromStructure);
-    setRowLength(imagesStructureRowLength);
 
     const interval = setInterval(() => {
       setImagesData((imagesDataOld) => (
@@ -108,7 +91,7 @@ const ImageGallery: FC<ImageGalleryPropsType> = ({
   return (
     <div
       className={s.gallery}
-      style={{ height: containerHeight, gridTemplateColumns: `repeat(${rowLength}, 1fr)` }}
+      style={{ height: containerHeight, gridTemplateColumns: `repeat(${galleryStructureConfig.columnsCount}, 1fr)` }}
     >
       {imagesData.map((imageProps) => (
         <ImageItem

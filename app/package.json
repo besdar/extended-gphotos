@@ -1,7 +1,7 @@
 {
   "name": "squares-gallery",
   "homepage": "https://besdar.github.io/squares-gallery/",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "dependencies": {
     "react": "^17.0.2",
@@ -26,7 +26,8 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "not IE all"
     ],
     "development": [
       "last 1 chrome version",

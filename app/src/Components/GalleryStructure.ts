@@ -19,72 +19,80 @@ const isSquareFit = (
   return true;
 };
 
-const getRandomSquareSide = (
-  minSquareSide: number,
-  timesNumberMaxSideGreaterThanMinSide: number,
-): number => {
+const getRandomSquareSide = (timesNumberMaxSideGreaterThanMinSide: number): number => {
   if (timesNumberMaxSideGreaterThanMinSide === 0) {
-    return minSquareSide;
+    return 1;
   }
 
-  return minSquareSide * Math.round(Math.random())
-    + getRandomSquareSide(minSquareSide, timesNumberMaxSideGreaterThanMinSide - 1);
+  return Math.round(Math.random()) + getRandomSquareSide(timesNumberMaxSideGreaterThanMinSide - 1);
 };
 
-const generateSquaresMap = (mapHeight: number, mapWidth: number, squareSideLength: number) => {
-  const rowLength = Math.floor(mapWidth / squareSideLength);
+export const calculateGalleryStructureParams = (
+  height: number,
+  width: number,
+  minSquareSide: number,
+  maxSqureSide: number,
+): galleryStructureParamsType | null => {
+  const rowLength = Math.floor(width / minSquareSide);
+  const maxSquareSizeInColumns = Math.floor(maxSqureSide / minSquareSide);
 
-  if (rowLength === 0) {
-    return [];
+  if (rowLength === 0 || maxSquareSizeInColumns <= 1) {
+    return null;
   }
 
-  const rowsCount = Math.floor(mapHeight / squareSideLength);
+  const rowsCount = Math.floor(height / minSquareSide);
+
+  return {
+    columnsCount: rowLength,
+    rowsCount,
+    maxSquareSizeInColumns,
+  };
+};
+
+const generateSquaresMap = (
+  rowsCount: number,
+  columnsCount: number,
+) => {
   const squaresMap = [] as number[][];
 
   for (let i = 0; i < rowsCount; i += 1) {
-    squaresMap.push(new Array(rowLength).fill(0));
+    squaresMap.push(new Array(columnsCount).fill(0));
   }
 
   return squaresMap;
 };
 
 export type SquareType = {
-    xstart: number,
-    xend: number,
-    ystart: number,
-    yend: number,
+  xstart: number,
+  xend: number,
+  ystart: number,
+  yend: number,
 }
 
-export const getGalleryStructureData = (
-  mapHeight: number,
-  mapWidth: number,
-  minSquareSide: number,
-  timesNumberMaxSideGreaterThanMinSide: number,
-) => {
-  const squaresMap = generateSquaresMap(mapHeight, mapWidth, minSquareSide);
-  const result = {
-    imagesStructureData: [] as SquareType[],
-    rowLength: 0,
-  };
+export type galleryStructureParamsType = {
+  rowsCount: number,
+  columnsCount: number,
+  maxSquareSizeInColumns: number,
+};
+export const getGalleryStructureData = ({
+  rowsCount,
+  columnsCount,
+  maxSquareSizeInColumns,
+}: galleryStructureParamsType) => {
+  const squaresMap = generateSquaresMap(rowsCount, columnsCount);
+  const result = [] as SquareType[];
 
-  if (squaresMap.length === 0) {
+  if (rowsCount === 0) {
     return result;
   }
 
-  result.rowLength = squaresMap[0].length;
-  const rowsCount = squaresMap.length;
   let currentRow = 0;
   let currentColumn = 0;
   let mapNumber = 1;
 
-  while (true) {
-    const squareSide = getRandomSquareSide(minSquareSide, timesNumberMaxSideGreaterThanMinSide);
-    const sideInElementarySquares = squareSide / minSquareSide;
-    const isEndOfLine = currentColumn === result.rowLength || currentColumn === -1;
-
-    if (isEndOfLine && currentRow === rowsCount - 1) {
-      break;
-    }
+  while ((currentColumn !== columnsCount && currentColumn !== -1) || currentRow !== rowsCount - 1) {
+    const sideInElementarySquares = getRandomSquareSide(maxSquareSizeInColumns);
+    const isEndOfLine = currentColumn === columnsCount || currentColumn === -1;
 
     if (isEndOfLine) {
       currentRow += 1;
@@ -98,7 +106,7 @@ export const getGalleryStructureData = (
         }
       }
 
-      result.imagesStructureData.push({
+      result.push({
         xstart: currentColumn + 1,
         xend: currentColumn + 1 + sideInElementarySquares,
         ystart: currentRow + 1,

@@ -4,50 +4,57 @@ import s from './ImageGallery.module.css';
 import { galleryStructureParamsType, getGalleryStructureData } from '../GalleryStructure';
 
 const changeImageInArray = (
-  ImageArray: Array<ImageItemPropsType & { id: number }>,
+  ImageArray: Array<ImagesDataType>,
   getRandomImage: getRandomImageFuncType,
   simultaneouslyImageChanging = 3,
 ) => {
+  if (
+    ImageArray.length === 0
+    || simultaneouslyImageChanging <= 0
+    || simultaneouslyImageChanging >= ImageArray.length - 1
+  ) {
+    return ImageArray;
+  }
+
   const ImagesData = [...ImageArray];
 
-  if (ImagesData.length !== 0) {
-    const uniqueIndexes = new Set<number>();
-    for (let i = 0; i < simultaneouslyImageChanging; i += 1) {
-      uniqueIndexes.add(Math.floor(Math.random() * (ImagesData.length - 1)));
-    }
-
-    uniqueIndexes.forEach((randomIndex) => {
-      const randomImage = getRandomImage();
-
-      if (ImagesData[randomIndex].isFirstImageActive) {
-        ImagesData[randomIndex] = {
-          ...ImagesData[randomIndex],
-          isFirstImageActive: false,
-          anotherImageUrl: randomImage.imageUrl,
-          tooltipTitle: randomImage.tooltipTitle,
-          webUrl: randomImage.webUrl,
-        };
-      } else {
-        ImagesData[randomIndex] = {
-          ...ImagesData[randomIndex],
-          isFirstImageActive: true,
-          imageUrl: randomImage.imageUrl,
-          tooltipTitle: randomImage.tooltipTitle,
-          webUrl: randomImage.webUrl,
-        };
-      }
-    });
+  const uniqueIndexes = new Set<number>();
+  while (uniqueIndexes.size !== simultaneouslyImageChanging) {
+    uniqueIndexes.add(Math.floor(Math.random() * (ImagesData.length - 1)));
   }
+
+  uniqueIndexes.forEach((randomIndex) => {
+    const randomImage = getRandomImage();
+
+    if (ImagesData[randomIndex].isFirstImageActive) {
+      ImagesData[randomIndex] = {
+        ...ImagesData[randomIndex],
+        isFirstImageActive: false,
+        anotherImageUrl: randomImage.imageUrl,
+        tooltipTitle: randomImage.tooltipTitle,
+        webUrl: randomImage.webUrl,
+      };
+    } else {
+      ImagesData[randomIndex] = {
+        ...ImagesData[randomIndex],
+        isFirstImageActive: true,
+        imageUrl: randomImage.imageUrl,
+        tooltipTitle: randomImage.tooltipTitle,
+        webUrl: randomImage.webUrl,
+      };
+    }
+  });
 
   return ImagesData;
 };
 
+type ImagesDataType = ImageItemPropsType & { id: number };
 type getRandomImageFuncType = () => ImageItemType;
 type ImageGalleryPropsType = {
-    getRandomImage: getRandomImageFuncType,
-    containerHeight: number,
-    galleryStructureConfig: galleryStructureParamsType,
-    simultaneouslyImageChanging?: number,
+  getRandomImage: getRandomImageFuncType,
+  galleryStructureConfig: galleryStructureParamsType,
+  containerHeight?: number,
+  simultaneouslyImageChanging?: number,
 }
 
 const ImageGallery: FC<ImageGalleryPropsType> = ({
@@ -56,7 +63,7 @@ const ImageGallery: FC<ImageGalleryPropsType> = ({
   galleryStructureConfig,
   simultaneouslyImageChanging,
 }) => {
-  const [imagesData, setImagesData] = useState([] as Array<ImageItemPropsType & { id: number }>);
+  const [imagesData, setImagesData] = useState([] as Array<ImagesDataType>);
 
   useEffect(() => {
     const imagesStructureData = getGalleryStructureData(galleryStructureConfig);

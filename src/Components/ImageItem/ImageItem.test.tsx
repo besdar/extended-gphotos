@@ -1,11 +1,11 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import ImageItem from './ImageItem';
 
 jest.useFakeTimers();
 
 it('Correct render', () => {
-  const component = mount(<ImageItem
+  const component = shallow(<ImageItem
       anotherImageUrl="anotherImg"
       isFirstImageActive
       imageUrl="firstImg"

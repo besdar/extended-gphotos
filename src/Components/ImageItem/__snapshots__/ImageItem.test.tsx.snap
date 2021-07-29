@@ -1,5 +1,151 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Correct render 1`] = `ReactWrapper {}`;
+exports[`Correct render 1`] = `
+<Fragment>
+  <CSSTransition
+    classNames={
+      Object {
+        "enter": "imageEnter",
+        "enterActive": "imageEnterActive",
+        "enterDone": "imageEnterDone",
+        "exit": "imageExit",
+        "exitActive": "imageExitActive",
+        "exitDone": "imageExitDone",
+      }
+    }
+    in={true}
+    mountOnEnter={true}
+    nodeRef={
+      Object {
+        "current": null,
+      }
+    }
+    timeout={3000}
+    unmountOnExit={true}
+  >
+    <a
+      className="image"
+      href="weburl"
+      rel="noreferrer"
+      style={
+        Object {
+          "backgroundImage": "url(firstImg)",
+          "gridArea": "1/3/4/2",
+        }
+      }
+      target="_blank"
+      title="tooltip"
+    />
+  </CSSTransition>
+  <CSSTransition
+    classNames={
+      Object {
+        "enter": "imageEnter",
+        "enterActive": "imageEnterActive",
+        "enterDone": "imageEnterDone",
+        "exit": "imageExit",
+        "exitActive": "imageExitActive",
+        "exitDone": "imageExitDone",
+      }
+    }
+    in={false}
+    mountOnEnter={true}
+    nodeRef={
+      Object {
+        "current": null,
+      }
+    }
+    timeout={3000}
+    unmountOnExit={true}
+  >
+    <a
+      className="image"
+      href="weburl"
+      rel="noreferrer"
+      style={
+        Object {
+          "backgroundImage": "url(anotherImg)",
+          "gridArea": "1/3/4/2",
+        }
+      }
+      target="_blank"
+      title="tooltip"
+    />
+  </CSSTransition>
+</Fragment>
+`;
 
-exports[`Correct render 2`] = `ReactWrapper {}`;
+exports[`Correct render 2`] = `
+<Fragment>
+  <CSSTransition
+    classNames={
+      Object {
+        "enter": "imageEnter",
+        "enterActive": "imageEnterActive",
+        "enterDone": "imageEnterDone",
+        "exit": "imageExit",
+        "exitActive": "imageExitActive",
+        "exitDone": "imageExitDone",
+      }
+    }
+    in={false}
+    mountOnEnter={true}
+    nodeRef={
+      Object {
+        "current": null,
+      }
+    }
+    timeout={3000}
+    unmountOnExit={true}
+  >
+    <a
+      className="image"
+      href="weburl"
+      rel="noreferrer"
+      style={
+        Object {
+          "backgroundImage": "url(firstImg)",
+          "gridArea": "1/3/4/2",
+        }
+      }
+      target="_blank"
+      title="tooltip"
+    />
+  </CSSTransition>
+  <CSSTransition
+    classNames={
+      Object {
+        "enter": "imageEnter",
+        "enterActive": "imageEnterActive",
+        "enterDone": "imageEnterDone",
+        "exit": "imageExit",
+        "exitActive": "imageExitActive",
+        "exitDone": "imageExitDone",
+      }
+    }
+    in={true}
+    mountOnEnter={true}
+    nodeRef={
+      Object {
+        "current": null,
+      }
+    }
+    timeout={3000}
+    unmountOnExit={true}
+  >
+    <a
+      className="image"
+      href="weburl"
+      rel="noreferrer"
+      style={
+        Object {
+          "backgroundImage": "url(anotherImg)",
+          "gridArea": "1/3/4/2",
+        }
+      }
+      target="_blank"
+      title="tooltip"
+    />
+  </CSSTransition>
+</Fragment>
+`;

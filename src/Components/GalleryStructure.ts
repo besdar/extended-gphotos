@@ -33,10 +33,14 @@ export const calculateGalleryStructureParams = (
   minSquareSide: number,
   maxSqureSide: number,
 ): galleryStructureParamsType | null => {
+  if (minSquareSide <= 0) {
+    return null;
+  }
+
   const rowLength = Math.floor(width / minSquareSide);
   const maxSquareSizeInColumns = Math.floor(maxSqureSide / minSquareSide);
 
-  if (rowLength === 0 || maxSquareSizeInColumns <= 1) {
+  if (rowLength <= 0 || maxSquareSizeInColumns <= 1) {
     return null;
   }
 
@@ -79,13 +83,13 @@ export const getGalleryStructureData = ({
   columnsCount,
   maxSquareSizeInColumns,
 }: galleryStructureParamsType) => {
-  const squaresMap = generateSquaresMap(rowsCount, columnsCount);
   const result = [] as SquareType[];
 
-  if (rowsCount === 0) {
+  if (rowsCount <= 0) {
     return result;
   }
 
+  const squaresMap = generateSquaresMap(rowsCount, columnsCount);
   let currentRow = 0;
   let currentColumn = 0;
   let mapNumber = 1;

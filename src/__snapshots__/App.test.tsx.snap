@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Check App render with various helper function returns App renders with normal gallery structure function call 1`] = `
+<ImageGallery
+  containerHeight={768}
+  galleryStructureConfig={
+    Object {
+      "columnsCount": 2,
+      "maxSquareSizeInColumns": 2,
+      "rowsCount": 2,
+    }
+  }
+  getRandomImage={[Function]}
+/>
+`;
+
+exports[`Tests with window resize Big screen case 1`] = `
+<ImageGallery
+  containerHeight={768}
+  getRandomImage={[Function]}
+/>
+`;
+
+exports[`Tests with window resize Small screen case 1`] = `
+<ImageGallery
+  containerHeight={768}
+  getRandomImage={[Function]}
+/>
+`;

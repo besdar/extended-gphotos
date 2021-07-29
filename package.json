@@ -48,10 +48,16 @@
     "@types/react-transition-group": "^4.4.2",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.2",
     "gh-pages": "^3.2.3",
     "react-scripts": "4.0.3",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",
     "typescript": "^4.3.5"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }

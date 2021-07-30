@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for getRandomKinopoiskImageInfo function Returns random object with preview image 1`] = `
+Object {
+  "imageUrl": "prewiew1",
+  "tooltipTitle": "nameRu1",
+  "webUrl": "webUrl1",
+}
+`;
+
+exports[`Tests for getRandomKinopoiskImageInfo function Returns random object without preview image 1`] = `
+Object {
+  "imageUrl": "image1",
+  "tooltipTitle": "nameRu1",
+  "webUrl": "webUrl1",
+}
+`;

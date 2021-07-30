@@ -17,21 +17,18 @@ describe('Check App render with various helper function returns', () => {
   it('App do not render with wrong gallery structure function call', () => {
     calculateGalleryStructureParamsMock.mockReturnValueOnce(null);
     const component = shallow(<App />);
-  
+
     expect(component.isEmptyRender()).toBeTruthy();
-  
-    jest.unmock('./Components/GalleryStructure');
   });
-  
+
   it('App renders with normal gallery structure function call', () => {
     calculateGalleryStructureParamsMock.mockReturnValueOnce({
       columnsCount: 2,
       maxSquareSizeInColumns: 2,
       rowsCount: 2,
     });
-  
+
     const component = shallow(<App />);
-  
     expect(component).toMatchSnapshot();
   });
 });

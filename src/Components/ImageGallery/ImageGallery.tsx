@@ -53,7 +53,7 @@ type getRandomImageFuncType = () => ImageItemType;
 type ImageGalleryPropsType = {
   getRandomImage: getRandomImageFuncType,
   galleryStructureConfig: galleryStructureParamsType,
-  containerHeight?: number,
+  containerHeight?: number | string,
   simultaneouslyImageChanging?: number,
 }
 

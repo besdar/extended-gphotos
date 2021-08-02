@@ -1,7 +1,7 @@
 {
-  "name": "squares-gallery",
-  "homepage": "https://besdar.github.io/squares-gallery/",
-  "version": "1.0.2",
+  "name": "live-tiles-gallery",
+  "homepage": "https://besdar.github.io/live-tiles-gallery/",
+  "version": "1.0.3",
   "private": true,
   "dependencies": {
     "react": "^16.14.0",

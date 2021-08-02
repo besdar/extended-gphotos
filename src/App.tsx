@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { getRandomKinopoiskImageInfo } from './api/kinopoisk-films-data';
-import { FilmsData } from './api/kinopoisk-films-object';
+import { getRandomKinopoiskImageInfo } from './api/kinopoisk/kinopoisk-films-data';
+import { FilmsData } from './api/kinopoisk/kinopoisk-films-object';
 import { calculateGalleryStructureParams } from './Components/GalleryStructure';
 import ImageGallery from './Components/ImageGallery/ImageGallery';
 

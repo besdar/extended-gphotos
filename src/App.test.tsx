@@ -1,19 +1,23 @@
 import React from 'react';
-import App from './App';
 import { shallow } from 'enzyme';
+import App from './App';
 import { calculateGalleryStructureParams } from './Components/GalleryStructure';
 
 jest.mock('./Components/GalleryStructure', () => ({
-  calculateGalleryStructureParams: jest.fn()
+  calculateGalleryStructureParams: jest.fn(),
 }));
 
-const calculateGalleryStructureParamsMock = calculateGalleryStructureParams as jest.MockedFunction<typeof calculateGalleryStructureParams>;
+type CalculateGalleryStructureParamsType = typeof calculateGalleryStructureParams
+/* eslint-disable max-len */
+type CalculateGalleryStructureParamsMockType = jest.MockedFunction<CalculateGalleryStructureParamsType>
+const calculateGalleryStructureParamsMock = calculateGalleryStructureParams as CalculateGalleryStructureParamsMockType;
+/* eslint-enable max-len */
 
 describe('Check App render with various helper function returns', () => {
   beforeEach(() => {
     calculateGalleryStructureParamsMock.mockReset();
   });
-  
+
   it('App do not render with wrong gallery structure function call', () => {
     calculateGalleryStructureParamsMock.mockReturnValueOnce(null);
     const component = shallow(<App />);
@@ -65,4 +69,4 @@ describe('Tests with window resize', () => {
     const component = shallow(<App />);
     expect(component).toMatchSnapshot();
   });
-})
+});

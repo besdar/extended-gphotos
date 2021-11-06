@@ -115,4 +115,9 @@ const ImageGallery: FC<ImageGalleryPropsType> = ({
   );
 };
 
+ImageGallery.defaultProps = {
+  containerHeight: '100%',
+  simultaneouslyImageChanging: 3,
+};
+
 export default ImageGallery;

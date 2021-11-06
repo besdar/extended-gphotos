@@ -1,4 +1,4 @@
-// Getted by running js script
+// Was got by running js script
 // Array.from(document.getElementById('itemList').children)
 // .map(el => Number(el.id.replace('film_', '')))
 // in the browser console on the page

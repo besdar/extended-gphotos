@@ -20,7 +20,7 @@ it('Correct render', () => {
   />);
 
   jest.runAllTimers();
-  
+
   expect(component).toMatchSnapshot();
 
   component.setProps({ isFirstImageActive: false });

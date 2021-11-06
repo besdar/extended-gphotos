@@ -1,6 +1,6 @@
 // import { getFilmInfoFromAPI, getFramesFromAPI } from "./api";
-import { getRandomKinopoiskImageInfo } from "./kinopoisk-films-data"
-import { FilmInfo } from "./kinopoisk-films-object";
+import { getRandomKinopoiskImageInfo } from './kinopoisk-films-data';
+import { FilmInfo } from './kinopoisk-films-object';
 
 // jest.mock('./api', () => ({
 //     getFilmInfoFromAPI: jest.fn(),
@@ -8,25 +8,26 @@ import { FilmInfo } from "./kinopoisk-films-object";
 // }));
 
 describe('Tests for getRandomKinopoiskImageInfo function', () => {
-    const ImageData = [
-        {
-            image: 'image1',
-            nameRu: 'nameRu1',
-            preview: 'prewiew1',
-            webUrl: 'webUrl1'
-        }
-    ] as Array<FilmInfo>;
+  const ImageData = [
+    {
+      image: 'image1',
+      nameRu: 'nameRu1',
+      preview: 'prewiew1',
+      webUrl: 'webUrl1',
+    },
+  ] as Array<FilmInfo>;
 
-    it('Returns random object with preview image', () => {
-        expect(getRandomKinopoiskImageInfo(ImageData)()).toMatchSnapshot();
-    });
+  it('Returns random object with preview image', () => {
+    expect(getRandomKinopoiskImageInfo(ImageData)()).toMatchSnapshot();
+  });
 
-    it('Returns random object without preview image', () => {
-        expect(getRandomKinopoiskImageInfo(ImageData)(false)).toMatchSnapshot();
-    });
+  it('Returns random object without preview image', () => {
+    expect(getRandomKinopoiskImageInfo(ImageData)(false)).toMatchSnapshot();
+  });
 });
 
-// TODO: Can not mock setTimeout with Promises. setTimeout never triggers, Promises (fetch) never resolves or return undefined
+// TODO: Can not mock setTimeout with Promises. setTimeout never triggers,
+// Promises (fetch) never resolves or return undefined
 // describe('Tests for getFilmCovers function', () => {
 //     beforeAll(() => {
 //         jest.useFakeTimers('legacy');

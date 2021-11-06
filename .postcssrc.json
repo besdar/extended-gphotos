@@ -5,6 +5,7 @@
       "grid": true
     },
     "postcss-modules": {
+      "localsConvention": "dashesOnly",
       "generateScopedName": "[name]__[local]"
     }
   }

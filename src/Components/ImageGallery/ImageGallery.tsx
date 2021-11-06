@@ -6,7 +6,7 @@ import { galleryStructureParamsType, getGalleryStructureData } from '../GalleryS
 const changeImageInArray = (
   ImageArray: Array<ImagesDataType>,
   getRandomImage: getRandomImageFuncType,
-  simultaneouslyImageChanging = 3,
+  simultaneouslyImageChanging: number,
 ) => {
   if (
     ImageArray.length === 0
@@ -59,9 +59,9 @@ type ImageGalleryPropsType = {
 
 const ImageGallery: FC<ImageGalleryPropsType> = ({
   getRandomImage,
-  containerHeight,
   galleryStructureConfig,
-  simultaneouslyImageChanging,
+  containerHeight = '100%',
+  simultaneouslyImageChanging = 3,
 }) => {
   const [imagesData, setImagesData] = useState([] as Array<ImagesDataType>);
 
@@ -113,11 +113,6 @@ const ImageGallery: FC<ImageGalleryPropsType> = ({
       ))}
     </div>
   );
-};
-
-ImageGallery.defaultProps = {
-  containerHeight: '100%',
-  simultaneouslyImageChanging: 3,
 };
 
 export default ImageGallery;

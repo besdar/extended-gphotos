@@ -14,16 +14,17 @@
     "build": "parcel build ./public/index.html --public-url /live-tiles-gallery/",
     "deploy": "gh-pages -d dist",
 
-    "test": "jest",
+    "check-tests": "jest",
     "check-js": "eslint --cache --ext .ts,.tsx ./src",
     "check-styles": "stylelint \"./src/**/*.css\"",
     "check-types": "tsc",
     "project-checking": "concurrently \"npm:check-*\"",
+
     "update-css-types": "tcm src --namedExports"
   },
   "browserslist": {
     "production": [
-      ">0.2%",
+      ">1%",
       "not dead",
       "not op_mini all"
     ],

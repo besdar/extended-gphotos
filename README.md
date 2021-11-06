@@ -2,8 +2,6 @@
 
 Live Tiles Gallery is a React component which render tile-like gallery with random images changes.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ### Live Demo
 
 [`besdar.github.io/live-tiles-gallery`](https://besdar.github.io/live-tiles-gallery/)

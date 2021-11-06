@@ -1,5 +1,3 @@
-declare const styles: {
-  readonly "gallery": string;
-};
-export = styles;
+export const __esModule: true;
+export const gallery: string;
 

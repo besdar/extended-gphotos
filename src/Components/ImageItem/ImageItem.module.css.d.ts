@@ -1,11 +1,9 @@
-declare const styles: {
-  readonly "image": string;
-  readonly "imageEnter": string;
-  readonly "imageEnterActive": string;
-  readonly "imageEnterDone": string;
-  readonly "imageExit": string;
-  readonly "imageExitActive": string;
-  readonly "imageExitDone": string;
-};
-export = styles;
+export const __esModule: true;
+export const image: string;
+export const imageEnter: string;
+export const imageEnterActive: string;
+export const imageEnterDone: string;
+export const imageExit: string;
+export const imageExitActive: string;
+export const imageExitDone: string;
 

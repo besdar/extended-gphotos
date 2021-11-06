@@ -1,33 +1,27 @@
 {
   "name": "live-tiles-gallery",
   "homepage": "https://besdar.github.io/live-tiles-gallery/",
-  "version": "1.0.3",
-  "private": true,
-  "dependencies": {
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "react-transition-group": "^4.4.2"
+  "version": "1.0.4",
+  "private": false,
+  "author": "besdar",
+  "license": "GPL-3.0",
+  "description": "Simple gallery with random image changing",
+  "bugs": {
+    "url": "https://github.com/besdar/live-tiles-gallery/issues"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "dev": "parcel ./public/index.html",
+    "build": "parcel build ./public/index.html --public-url /live-tiles-gallery/",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "deploy": "gh-pages -d dist",
+    "test": "jest",
+    "css": "tcm src --camelCase"
   },
   "browserslist": {
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all",
-      "not IE <= 11"
+      "not op_mini all"
     ],
     "development": [
       "last 1 chrome version",
@@ -35,29 +29,42 @@
       "last 1 safari version"
     ]
   },
+  "dependencies": {
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-transition-group": "^4.4.2"
+  },
   "devDependencies": {
+    "@parcel/packager-raw-url": "^2.0.0",
+    "@parcel/transformer-webmanifest": "^2.0.0",
     "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
-    "@testing-library/user-event": "^13.2.1",
     "@types/enzyme": "^3.10.9",
     "@types/enzyme-adapter-react-16": "^1.0.6",
-    "@types/jest": "^26.0.24",
+    "@types/jest": "^27.0.2",
     "@types/node": "^16.4.3",
-    "@types/react": "^17.0.15",
-    "@types/react-dom": "^17.0.9",
+    "@types/react": "^16.14.20",
+    "@types/react-dom": "^16.9.14",
     "@types/react-transition-group": "^4.4.2",
+    "autoprefixer": "^10.4.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "enzyme-to-json": "^3.6.2",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "gh-pages": "^3.2.3",
-    "react-scripts": "4.0.3",
-    "stylelint": "^13.13.1",
-    "stylelint-config-standard": "^22.0.0",
-    "typescript": "^4.3.5"
-  },
-  "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.2.5",
+    "parcel": "^2.0.0",
+    "postcss-modules": "^4.2.2",
+    "stylelint": "^14.0.1",
+    "stylelint-config-standard": "^23.0.0",
+    "ts-jest": "^27.0.7",
+    "typed-css-modules": "^0.7.0",
+    "typescript": "^4.3.5",
+    "typescript-plugin-css-modules": "^3.4.0"
   }
 }

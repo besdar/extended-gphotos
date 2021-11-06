@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import ImageItem, { ImageItemPropsType, ImageItemType } from '../ImageItem/ImageItem';
-import s from './ImageGallery.module.css';
+import * as s from './ImageGallery.module.css';
 import { galleryStructureParamsType, getGalleryStructureData } from '../GalleryStructure';
 
 const changeImageInArray = (

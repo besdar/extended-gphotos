@@ -1,6 +1,6 @@
 import React, { FC, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import s from './ImageItem.module.css';
+import * as s from './ImageItem.module.css';
 import { SquareType } from '../GalleryStructure';
 
 export type ImageItemType = {

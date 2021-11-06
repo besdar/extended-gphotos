@@ -10,33 +10,33 @@
 }
 
 /* Declare transition start properties */
-.imageEnter {
-  opacity: 0;
+.image-enter {
+  opacity: 0%;
 }
 
 /* Declare transition properties */
-.imageEnterActive {
-  opacity: 1;
+.image-enter-active {
+  opacity: 100%;
   transition-property: all;
   transition-duration: 3s;
   transition-timing-function: linear;
 }
 
-.imageEnterDone {
-  opacity: 1;
+.image-enter-done {
+  opacity: 100%;
 }
 
-.imageExit {
-  opacity: 1;
+.image-exit {
+  opacity: 100%;
 }
 
-.imageExitActive {
-  opacity: 0;
+.image-exit-active {
+  opacity: 0%;
   transition-property: all;
   transition-duration: 3s;
   transition-timing-function: linear;
 }
 
-.imageExitDone {
-  opacity: 0;
+.image-exit-done {
+  opacity: 0%;
 }
